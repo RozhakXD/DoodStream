@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dood-NG | Ad-Free DoodStream Downloader</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="https://iili.io/FUBssSa.png" type="image/png">
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+
+            .status-card {
+                transition: all 0.3s ease-in-out;
+            }
+
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #1f2937;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #4b5563;
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #6b7280;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-900 text-gray-300">
+        <!-- Header -->
+        <header class="bg-gray-800/50 backdrop-blur-sm sticky top-0 z-50">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-bold text-white">Dood<span class="text-blue-500">-NG</span>
+                </div>
+                <ul class="flex items-center space-x-6 text-sm">
+                    <li>
+                        <a href="#" class="hover:text-blue-400 transition">Fitur</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-blue-400 transition">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/RozhakXD/DoodStream" target="_blank" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg transition">GitHub</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="container mx-auto px-6 py-12 md:py-20">
+            <!-- Hero Section -->
+            <section class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight"> Tonton & Unduh Video <span class="text-blue-500">DoodStream</span> Tanpa Gangguan </h1>
+                <p class="mt-4 text-lg text-gray-400"> Cukup tempel URL video atau folder, dan biarkan kami yang mengurus sisanya. Cepat, bersih, dan bebas iklan. </p>
+                <form id="download-form" class="mt-10">
+                    <div class="flex flex-col md:flex-row gap-3 max-w-xl mx-auto">
+                        <input type="url" id="video-url" placeholder="Tempel URL di sini..." class="flex-grow p-4 text-gray-200 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" required>
+                        <button type="submit" id="submit-button" class="bg-blue-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-300 ease-in-out disabled:bg-gray-600 disabled:cursor-not-allowed flex items-center justify-center">
+                            <span id="button-text">Proses</span>
+                            <svg id="button-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </section>
+            <!-- Status & Result Section -->
+            <section id="status-container" class="mt-12 max-w-3xl mx-auto space-y-4"></section>
+        </main>
+        <!-- Features Section -->
+        <section class="py-20 bg-gray-800/50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-white">Kenapa Memilih Kami?</h2>
+                <p class="text-gray-400 mt-2">Kami fokus pada pengalaman Anda.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <svg class="w-12 h-12 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-white">Aman & Pribadi</h3>
+                        <p class="mt-2 text-gray-400">Tanpa pelacak, tanpa iklan berbahaya. Video Anda diproses dan dihapus secara otomatis.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <svg class="w-12 h-12 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-white">Sangat Cepat</h3>
+                        <p class="mt-2 text-gray-400">Backend asinkron kami memproses permintaan Anda secepat mungkin tanpa membuat Anda menunggu.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <svg class="w-12 h-12 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-white">Tonton atau Unduh</h3>
+                        <p class="mt-2 text-gray-400">Nikmati kemudahan menonton video secara langsung atau mengunduhnya untuk ditonton nanti.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="bg-gray-800">
+            <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+                <p>&copy; 2025 Dood-NG. Sebuah Proyek Kolaborasi Open Source.</p>
+                <p class="text-sm mt-1">Dibuat dengan <span class="text-red-500">&hearts;</span> menggunakan Django & Tailwind CSS. </p>
+            </div>
+        </footer>
+        <script>
+            const form = document.getElementById('download-form');
+            const urlInput = document.getElementById('video-url');
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            const buttonSpinner = document.getElementById('button-spinner');
+            const statusContainer = document.getElementById('status-container');
+            let pollingIntervals = {};
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const videoUrl = urlInput.value.trim();
+                if (!videoUrl) return;
+                setLoadingState(true);
+                statusContainer.innerHTML = '';
+                try {
+                    const response = await fetch('/api/v1/download/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            url: videoUrl
+                        })
+                    });
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.error || 'Terjadi kesalahan.');
+                    startPolling(data.task_id, data.type);
+                } catch (error) {
+                    displayStatusCard('error', error.message, '', 'global-error');
+                    setLoadingState(false);
+                }
+            });
+
+            function startPolling(taskId, taskType) {
+                const initialMessage = taskType === 'folder_scrape' ? 'Mengambil daftar video...' : 'Memulai proses unduhan...';
+                displayStatusCard('info', initialMessage, '', taskId);
+                if (pollingIntervals[taskId]) clearInterval(pollingIntervals[taskId]);
+                pollingIntervals[taskId] = setInterval(async () => {
+                    try {
+                        const response = await fetch(`/api/v1/status/${taskId}/`);
+                        const data = await response.json();
+                        if (taskType === 'folder_scrape') {
+                            handleFolderScrapeResult(data);
+                        } else {
+                            handleSingleDownloadResult(data, taskId);
+                        }
+                        if (data.status === 'SUCCESS' || data.status === 'FAILURE') {
+                            clearInterval(pollingIntervals[taskId]);
+                            delete pollingIntervals[taskId];
+                            if (Object.keys(pollingIntervals).length === 0) {
+                                const mainFormTaskStillRunning = Object.keys(pollingIntervals).length > 0;
+                                if (!mainFormTaskStillRunning) {
+                                    setLoadingState(false);
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Polling error:', error);
+                        displayStatusCard('error', 'Gagal memeriksa status.', '', taskId);
+                        clearInterval(pollingIntervals[taskId]);
+                        delete pollingIntervals[taskId];
+                    }
+                }, 2000);
+            }
+
+            function handleFolderScrapeResult(taskData) {
+                if (taskData.status === 'SUCCESS' && taskData.result.status === 'SUCCESS') {
+                    statusContainer.innerHTML = '';
+                    displayVideoList(taskData.result.videos);
+                    setLoadingState(false);
+                } else if (taskData.status === 'FAILURE' || (taskData.result && taskData.result.status === 'FAILURE')) {
+                    statusContainer.innerHTML = '';
+                    displayStatusCard('error', 'Gagal mengambil daftar video.', taskData.result.error, 'folder-error');
+                    setLoadingState(false);
+                }
+            }
+
+            function handleSingleDownloadResult(taskData, elementId) {
+                const {
+                    status,
+                    result
+                } = taskData;
+                if (status === 'SUCCESS' && result) {
+                    const videoUrl = `/${result.filepath}`;
+                    const videoTitle = result.filepath.split('/').pop();
+                    const successContent = `
+                    
+									<div class="bg-gray-800 rounded-lg overflow-hidden">
+										<video controls class="w-full" preload="metadata">
+											<source src="${videoUrl}" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        
+											</video>
+											<div class="p-4 flex justify-between items-center">
+												<p class="text-white font-semibold truncate" title="${videoTitle}">${videoTitle}</p>
+												<a href="${videoUrl}" download class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition flex-shrink-0">
+                                Unduh
+                            </a>
+											</div>
+										</div>
+                `;
+                    displayStatusCard('success', 'Video Siap!', successContent, elementId);
+                } else if (status === 'FAILURE' && result) {
+                    displayStatusCard('error', 'Proses Gagal.', `
+										<p class="text-sm">${result.error}</p>`, elementId);
+                } else if (status === 'PROGRESS' && result) {
+                    displayStatusCard('info', `Status: ${result.status || 'Processing...'}`, '', elementId);
+                } else {
+                    displayStatusCard('info', `Status: ${status}...`, '', elementId);
+                }
+            }
+
+            function displayVideoList(videos) {
+                if (!videos || videos.length === 0) {
+                    displayStatusCard('info', 'Tidak ada video yang ditemukan di dalam folder ini.', '', 'folder-empty');
+                    return;
+                }
+                const listHeader = `
+										<h3 class="text-2xl font-bold text-white mb-4">Video dalam Folder:</h3>`;
+                statusContainer.innerHTML = listHeader;
+                videos.forEach(video => {
+                    const videoId = `video-card-${Math.random().toString(36).substr(2, 9)}`;
+                    const videoCardHTML = `
+										<div id="${videoId}" class="bg-gray-800 p-4 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+											<div class="flex-grow">
+												<p class="font-bold text-white">${video.title}</p>
+												<p class="text-sm text-gray-400">
+													<span>${video.size}</span> &middot; 
+													<span>${video.duration}</span> &middot; 
+													<span>${video.date}</span>
+												</p>
+											</div>
+											<button data-url="${video.link}" data-target-id="${videoId}" class="download-item-btn bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition w-full md:w-auto flex-shrink-0"> Proses </button>
+										</div>`;
+                    statusContainer.insertAdjacentHTML('beforeend', videoCardHTML);
+                });
+            }
+            statusContainer.addEventListener('click', function(e) {
+                if (e.target && e.target.classList.contains('download-item-btn')) {
+                    const button = e.target;
+                    const urlToDownload = button.dataset.url;
+                    const targetId = button.dataset.targetId;
+                    fetch('/api/v1/download/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            url: urlToDownload
+                        })
+                    }).then(res => res.json()).then(data => {
+                        const oldCard = document.getElementById(targetId);
+                        if (oldCard) oldCard.id = data.task_id;
+                        startPolling(data.task_id, 'single_download');
+                    });
+                }
+            });
+
+            function setLoadingState(isLoading) {
+                submitButton.disabled = isLoading;
+                buttonText.classList.toggle('hidden', isLoading);
+                buttonSpinner.classList.toggle('hidden', !isLoading);
+            }
+
+            function displayStatusCard(type, title, details = '', elementId) {
+                if (!elementId) {
+                    console.error("displayStatusCard dipanggil tanpa elementId");
+                    return;
+                }
+                let card = document.getElementById(elementId);
+                if (!card) {
+                    card = document.createElement('div');
+                    card.id = elementId;
+                    if (statusContainer.firstChild && statusContainer.firstChild.tagName === 'H3') {
+                        statusContainer.insertBefore(card, statusContainer.firstChild.nextSibling);
+                    } else {
+                        statusContainer.prepend(card);
+                    }
+                }
+                let bgColor, textColor, icon, titleColor;
+                switch (type) {
+                    case 'success':
+                        bgColor = 'bg-gray-800/50';
+                        textColor = 'text-green-400';
+                        titleColor = 'text-green-400';
+                        icon = `
+										<svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>`;
+                        break;
+                    case 'error':
+                        bgColor = 'bg-red-900/50';
+                        textColor = 'text-red-300';
+                        titleColor = 'text-red-400';
+                        icon = `
+										<svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>`;
+                        break;
+                    default:
+                        bgColor = 'bg-blue-900/50';
+                        textColor = 'text-blue-300';
+                        titleColor = 'text-blue-400';
+                        icon = `
+										<svg class="w-6 h-6 mr-3 flex-shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+										</svg>`;
+                }
+                if (type === 'success') {
+                    card.innerHTML = `
+										<div class="status-card border border-gray-700 rounded-lg">
+											<div class="p-4 flex items-center ${titleColor}">
+												<p class="font-bold">${title}</p>
+											</div>${details}
+										</div>`;
+                } else {
+                    card.innerHTML = `
+										<div class="status-card ${bgColor} border border-gray-700 p-4 rounded-lg flex items-start"> ${icon} 
+											<div>
+												<p class="font-bold ${titleColor}">${title}</p>
+												<div class="text-sm">${details}</div>
+											</div>
+										</div>`;
+                }
+            }
+        </script>
+    </body>
+</html>
